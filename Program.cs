@@ -1,28 +1,26 @@
 ﻿using System;
-using System.IO;
 
-class Book
+class FlowerShop
 {
-    public required string Title { get; set; }
-    public required string Author { get; set; }
+    public virtual string CreateFlower() => "Троянда ";
 }
 
-class BookSaver
+class TulipShop : FlowerShop
 {
-    public void Save(Book book)
-    {
-        File.WriteAllText("book.txt", $"{book.Title} by {book.Author}");
-    }
+    public override string CreateFlower() => "Тюльпан ";
 }
 
 class Program
 {
     static void Main()
     {
-        Book book = new Book { Title = "1984", Author = "George Orwell" };
-        BookSaver saver = new BookSaver();
-        saver.Save(book);
-        Console.WriteLine("Book saved!");
+        FlowerShop roseShop = new FlowerShop();
+        FlowerShop tulipShop = new TulipShop();
+
+        Console.WriteLine(roseShop.CreateFlower());
+        Console.WriteLine(tulipShop.CreateFlower());
     }
 }
+
+
 
